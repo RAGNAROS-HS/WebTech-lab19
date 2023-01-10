@@ -1,5 +1,13 @@
-table, th, td {
+table, td {
     border-collapse:collapse;
+    border:3px solid black;
     width:100%;
+
+}
+
+th {
+    width:auto;
+    border-collapse:collapse;
+    border:3px solid black;
 }
 
