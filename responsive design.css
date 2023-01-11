@@ -1,14 +1,21 @@
 :root {
     font-family: "Arial";
     font-size: medium;
+    font-style: normal;
+    font-weight: 100;
+    text-transform: initial;
+}
+
+
+h1 {
+    color: white;
+    text-align: center;
+    background-size:cover;
 }
 
 table, td {
     border-collapse:collapse;
-    border:3px solid black;
-    width:auto;
-
-
+    border:none;
 }
 
 figure {
@@ -25,8 +32,9 @@ ul {
     list-style-position: outside;
 }
 
-th {
-    /*width:auto;*/
+
+th, td { 
+    width:auto;
     margin-top: 3px;
     margin-right: 5px;
     margin-bottom: 3px;
@@ -35,6 +43,40 @@ th {
     border:3px solid black;
 }
 
-li {
+dt {
+    margin-left: 5px;
+}
+
+p, li{
     text-align: left;
+    margin: 5px;
+}
+
+
+.name {
+    text-align: center;
+}
+
+.headerRow{
+    background-color:black;
+    color: white;
+}
+
+.row1{
+    background-color: aliceblue;
+    color: black;
+}
+
+.row2{
+    background-color: lightgray;
+    color: black;
+}
+
+.tagsColumn{
+}
+
+.descriptionColumn{
+}
+
+.upper{
 }
