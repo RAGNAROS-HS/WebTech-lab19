@@ -1,13 +1,40 @@
+:root {
+    font-family: "Arial";
+    font-size: medium;
+}
+
 table, td {
     border-collapse:collapse;
     border:3px solid black;
     width:100%;
 
+
+}
+
+figure {
+    font-size: 90%;
+}
+
+img {
+    float: none;
+    margin: 5px 4px 5px 4px;
+}
+
+ul {
+    list-style-type: "\1F44D";
+    list-style-position: outside;
 }
 
 th {
-    width:auto;
+    /*width:auto;*/
+    margin-top: 3px;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    margin-left: 5px;
     border-collapse:collapse;
     border:3px solid black;
 }
 
+li {
+    text-align: left;
+}
