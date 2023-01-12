@@ -47,7 +47,7 @@ img {
     max-width: 100%;
     max-height: 100vh;
     margin: auto;
-    float: none;
+    float: center;
 }
 
 figcaption{
@@ -57,6 +57,11 @@ figcaption{
 ul {
     list-style-type: "\1F44D";
     list-style-position: outside;
+}
+
+ol {
+    list-style-image: none;
+
 }
 
 th { 
@@ -131,3 +136,50 @@ p, li{
     flex-shrink: 2;
     flex-basis:100%;
 }
+
+p.postText{
+    page-break-before: avoid;
+    page-break-after: avoid;
+}
+
+div{
+    widows:2;
+}
+
+.top caption {
+    caption-side: top;
+  }
+
+a:hover{
+    background-color: yellow;
+}
+a:link {
+    color: forestgreen;
+    text-decoration-color: hotpink;
+}
+a:visited{
+    color: red;
+    text-decoration-color: orange;
+}
+a:active{
+    background-color:cyan;
+}
+
+input:focus {
+    background-color: lightblue;
+}
+
+select:focus {
+    background-color: ivory;
+}
+
+@media print {
+    .orphans {
+      orphans:2;
+    }
+  }
+
+  @page {
+    size:21cm 27cm;
+    margin-top:2cm;
+  }
