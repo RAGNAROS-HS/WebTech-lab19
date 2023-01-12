@@ -1,0 +1,133 @@
+:root {
+    font-family: "Arial";
+    font-size: medium;
+    font-style: normal;
+    font-weight: 600;
+    background-image: url(https://img.freepik.com/free-photo/gray-concrete-wall_53876-89531.jpg?w=996&t=st=1673528365~exp=1673528965~hmac=8852ed87918b16fcc6ca2d2ad31f708887dca44b62feffc772b8cb3963cc6266);
+    background-repeat: repeat;
+}
+
+
+h1 {
+    color: black;
+    text-align: center;
+    background-size:cover;
+}
+
+table{
+    border-spacing: 0;
+    border-collapse:collapse;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+}
+
+td{
+    border-spacing: 0;
+    width:auto;
+    margin-top: 3px;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    margin-left: 5px;
+    border-collapse:collapse;
+    border:3px solid black;
+}
+
+figure {
+    font-size: 90%;
+}
+
+.imgbox {
+    display: grid;
+    height: 100%;
+}
+
+
+img {
+    max-width: 100%;
+    max-height: 100vh;
+    margin: auto;
+    float: none;
+}
+
+figcaption{
+    text-align: center;
+}
+
+ul {
+    list-style-type: "\1F44D";
+    list-style-position: outside;
+}
+
+th { 
+    width:auto;
+    margin-top: 3px;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    margin-left: 5px;
+    border-collapse:collapse;
+    border:3px solid black;
+}
+
+dt {
+    margin-left: 5px;
+}
+
+p, li{
+    text-align: left;
+    margin: 5px;
+}
+
+
+.name {
+    text-align: center;
+}
+
+.headerRow{
+    background-color:black;
+    color: white;
+}
+
+.row1{
+    background-color: aliceblue;
+    /*background-color: #d3bdb0;*/
+    color: black;
+}
+
+.row2{
+    background-color: lightgray;
+    /*background-color: #c1ae9f;*/
+    color: black;
+}
+
+.altColumn{
+    text-transform: capitalize;
+}
+
+.underlined{
+    text-decoration: underline;
+}
+.postText{
+    text-indent: 5%;
+}
+
+#container1{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-basis:100%;
+}
+#container2{
+    font-variant: normal;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis:100%;
+}
+
+#tableSection{
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 2;
+    flex-basis:100%;
+}
