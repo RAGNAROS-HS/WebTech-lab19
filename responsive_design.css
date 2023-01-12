@@ -3,7 +3,6 @@
     font-size: medium;
     font-style: normal;
     font-weight: 600;
-    /*background-image: url(https://img.freepik.com/free-photo/beige-aged-background_53876-88685.jpg?w=996&t=st=1673527357~exp=1673527957~hmac=334444f15862f2b23693ff08a7457037e5cc5f3718f9ffea1e026a1003b9914c);*/
     background-image: url(https://img.freepik.com/free-photo/gray-concrete-wall_53876-89531.jpg?w=996&t=st=1673528365~exp=1673528965~hmac=8852ed87918b16fcc6ca2d2ad31f708887dca44b62feffc772b8cb3963cc6266);
     background-repeat: repeat;
 }
@@ -15,11 +14,23 @@ h1 {
     background-size:cover;
 }
 
-table, td, tr{
+table{
     border-spacing: 0;
     border-collapse:collapse;
-    border:none;
+    border-color: black;
     border-width: 5px;
+    border-style: solid;
+}
+
+td{
+    border-spacing: 0;
+    width:auto;
+    margin-top: 3px;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    margin-left: 5px;
+    border-collapse:collapse;
+    border:3px solid black;
 }
 
 figure {
@@ -47,11 +58,8 @@ ul {
     list-style-type: "\1F44D";
     list-style-position: outside;
 }
-tr{
-    display: grid;
-}
 
-th, td { 
+th { 
     width:auto;
     margin-top: 3px;
     margin-right: 5px;
@@ -96,11 +104,6 @@ p, li{
     text-transform: capitalize;
 }
 
-.tagsColumn{
-}
-
-.descriptionColumn{
-}
 .underlined{
     text-decoration: underline;
 }
@@ -109,13 +112,22 @@ p, li{
 }
 
 #container1{
-
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-basis:100%;
 }
 #container2{
-
+    font-variant: normal;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis:100%;
 }
 
 #tableSection{
-
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 2;
+    flex-basis:100%;
 }
-
