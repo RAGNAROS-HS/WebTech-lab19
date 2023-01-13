@@ -7,7 +7,6 @@
     background-repeat: repeat;
 }
 
-
 h1 {
     color: black;
     text-align: center;
@@ -38,17 +37,15 @@ figure {
     font-size: 90%;
 }
 
-.imgbox {
-    display: grid;
-    height: 100%;
+div{
+    widows:2;
 }
-
 
 img {
     max-width: 100%;
     max-height: 100vh;
     margin: auto;
-    float: center;
+    float: none;
 }
 
 figcaption{
@@ -84,25 +81,31 @@ p, li{
     margin: 5px;
 }
 
-
 .name {
     text-align: center;
 }
 
+.imgbox {
+    display: grid;
+    height: 100%;
+}
+
 .headerRow{
-    background-color:black;
+    background:black;
     color: white;
 }
 
+.top caption {
+    caption-side: top;
+  }
+
 .row1{
     background-color: aliceblue;
-    /*background-color: #d3bdb0;*/
     color: black;
 }
 
 .row2{
     background-color: lightgray;
-    /*background-color: #c1ae9f;*/
     color: black;
 }
 
@@ -117,14 +120,20 @@ p, li{
     text-indent: 5%;
 }
 
+p.postText{
+    page-break-before: auto;
+    page-break-after: auto;
+}
+
 #container1{
+    font: 100;
     display:flex;
     flex-direction: column;
     flex-wrap: wrap;
     flex-basis:100%;
 }
 #container2{
-    font-variant: normal;
+    font-variant: small-caps;
     flex-direction: row;
     display: flex;
     flex-wrap: wrap;
@@ -137,19 +146,6 @@ p, li{
     flex-shrink: 2;
     flex-basis:100%;
 }
-
-p.postText{
-    page-break-before: auto;
-    page-break-after: auto;
-}
-
-div{
-    widows:2;
-}
-
-.top caption {
-    caption-side: top;
-  }
 
 a:hover{
     background-color: yellow;
@@ -174,7 +170,6 @@ select:focus {
     background-color: ivory;
 }
 
-
 @media print {
     
     td,ol, ul {
@@ -183,9 +178,8 @@ select:focus {
     
     tr{
         display: flex;
-        /*this can be changed to grid also but i think flex looks oke*/
     }
-  }
+}
 
 @media screen and (max-width: 450px){
     tr{
@@ -195,6 +189,5 @@ select:focus {
 
 @page {
     size: A4;
-
 }
 
