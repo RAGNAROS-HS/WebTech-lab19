@@ -22,7 +22,6 @@ table{
 }
 
 td{
-
     border-spacing: 0;
     width:auto;
     margin-top: 3px;
@@ -53,8 +52,9 @@ figcaption{
 }
 
 ul {
-    list-style-type: "\1F44D";
+    list-style: square;
     list-style-position: outside;
+    vertical-align: sub;
 }
 
 ol {
@@ -168,6 +168,13 @@ input:focus {
 
 select:focus {
     background-color: ivory;
+}
+
+#sourcesList {
+    list-style-type: "\1F913";
+    orphans: 3;
+    orphans: inherit;
+
 }
 
 @media print {
