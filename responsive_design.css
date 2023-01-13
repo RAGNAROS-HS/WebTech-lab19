@@ -177,6 +177,16 @@ select:focus {
 
 }
 
+#submitButton{
+    background-color : ivory;
+    border-radius :2px;
+    width: 100%;
+}
+
+#submitButton:hover{
+    background-color: hotpink;
+}
+
 @media print {
     
     td,ol, ul {
