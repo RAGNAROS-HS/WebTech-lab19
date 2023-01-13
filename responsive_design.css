@@ -36,7 +36,7 @@ figure {
     font-size: 90%;
 }
 
-div{
+div {
     widows:2;
 }
 
@@ -47,7 +47,7 @@ img {
     float: none;
 }
 
-figcaption{
+figcaption {
     text-align: center;
 }
 
@@ -76,7 +76,7 @@ dt {
     margin-left: 5px;
 }
 
-p, li{
+p, li {
     text-align: left;
     margin: 5px;
 }
@@ -90,7 +90,7 @@ p, li{
     height: 100%;
 }
 
-.headerRow{
+.headerRow {
     background:black;
     color: white;
 }
@@ -99,40 +99,40 @@ p, li{
     caption-side: top;
   }
 
-.row1{
+.row1 {
     background-color: aliceblue;
     color: black;
 }
 
-.row2{
+.row2 {
     background-color: lightgray;
     color: black;
 }
 
-.altColumn{
+.altColumn {
     text-transform: capitalize;
 }
 
-.underlined{
+.underlined {
     text-decoration: underline;
 }
-.postText{
+.postText {
     text-indent: 5%;
 }
 
-p.postText{
+p.postText {
     page-break-before: auto;
     page-break-after: auto;
 }
 
-#container1{
+#container1 {
     font: 100;
     display:flex;
     flex-direction: column;
     flex-wrap: wrap;
     flex-basis:100%;
 }
-#container2{
+#container2 {
     font-variant: small-caps;
     flex-direction: row;
     display: flex;
@@ -140,25 +140,25 @@ p.postText{
     flex-basis:100%;
 }
 
-#tableSection{
+#tableSection {
     display: flex;
     flex-grow: 0;
     flex-shrink: 2;
     flex-basis:100%;
 }
 
-a:hover{
+a:hover {
     background-color: yellow;
 }
 a:link {
     color: forestgreen;
     text-decoration-color: hotpink;
 }
-a:visited{
+a:visited {
     color: red;
     text-decoration-color: orange;
 }
-a:active{
+a:active {
     background-color:cyan;
 }
 
@@ -193,13 +193,13 @@ select:focus {
       page-break-inside: avoid;
     }
     
-    tr{
+    tr {
         display: flex;
     }
 }
 
-@media screen and (max-width: 450px){
-    tr{
+@media screen and (max-width: 450px) {
+    tr {
         display: grid;
     }
 }
