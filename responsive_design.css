@@ -23,6 +23,7 @@ table{
 }
 
 td{
+
     border-spacing: 0;
     width:auto;
     margin-top: 3px;
@@ -138,8 +139,8 @@ p, li{
 }
 
 p.postText{
-    page-break-before: avoid;
-    page-break-after: avoid;
+    page-break-before: auto;
+    page-break-after: auto;
 }
 
 div{
@@ -173,13 +174,27 @@ select:focus {
     background-color: ivory;
 }
 
+
 @media print {
-    .orphans {
-      orphans:2;
+    
+    td,ol, ul {
+      page-break-inside: avoid;
+    }
+    
+    tr{
+        display: flex;
+        /*this can be changed to grid also but i think flex looks oke*/
     }
   }
 
-  @page {
-    size:21cm 27cm;
-    margin-top:2cm;
-  }
+@media screen and (max-width: 450px){
+    tr{
+        display: grid;
+    }
+}
+
+@page {
+    size: A4;
+
+}
+
