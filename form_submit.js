@@ -2,34 +2,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
 
 
-    let imageX;
-    let authorX;
-    let altX;
-    let tagsX;
-    let descriptionX;
 
 
-    function logSubmit(event) {
-        imageX = document.getElementById("image").value;
-        authorX = document.getElementById("author").value;
-        altX = document.getElementById("alt").value;
-        tagsX = document.getElementById("tags").value;
-        descriptionX = document.getElementById("description").value;
+    const formEl = document.querySelector('.submit');
+
+    formEl.addEventListener('submit', event => {
         event.preventDefault();
-    }
 
-    const form = document.getElementById("submitForm");
-    form.addEventListener('submit', logSubmit);
+        const formData = new FormData(formEl);
+        const data = new URLSearchParams(formData);
 
-    function objectData (image, author, alt, tags, description){
-        this.image = image;
-        this.author = author;
-        this.alt = alt;
-        this.tags =  tags;
-        this.description = description;
-    }
-
-    const obiekt1 = new objectData(imageX, authorX, altX, tagsX, descriptionX);
-
+        fetch("https://wt.ops.labs.vu.nl/api23/98ce034a", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(error => console.log(error));
+    })
 });
 
