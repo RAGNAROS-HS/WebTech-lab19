@@ -4,7 +4,7 @@
         <link rel="stylesheet" type="text/css" href="responsive_design.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <title>First version</title>
+        <title>Photo album of famous computer science personas</title>
     </head>
     <body>
         <div id="container">
@@ -12,7 +12,7 @@
                 <form action="https://wt.ops.labs.vu.nl/api23/c0a0bdb0" method="post">
                     <h1>Photo album of famous CS (Computer Science) personas.</h1>
                     <table class="top">
-                        <caption>table</caption>
+                        <caption>"A good programmer is someone who always looks both ways before crossing a one-way street."</caption>
 
                         <tr class="headerRow">
                             <th>Image</th>
@@ -26,7 +26,7 @@
                             <td class="imageColumn">
                                 <figure>
                                     <div class="imgbox"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Edsger_Wybe_Dijkstra.jpg" 
-                                        alt="Image not available" width="200" height="300">
+                                        alt="Picture of Edsger Dijkstra" width="200" height="300">
                                     </div>
                                     <figcaption><pre><em>Fig.1: </em>Edsger W. Dijkstra in 2002</pre></figcaption>
                                 </figure>
@@ -70,7 +70,7 @@
                             <td class="imageColumn">
                                 <figure>
                                     <div class="imgbox"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16.jpg" 
-                                        alt="Image not available" width="200" height="300">
+                                        alt="Picture of Alan Turing" width="200" height="300">
                                     </div>
                                     <figcaption><pre><em>Fig.2: </em>Alan Turing 1928 at age 16</pre></figcaption>
                                 </figure>
@@ -114,7 +114,7 @@
                             <td class="imageColumn">
                                 <figure>
                                     <div class="imgbox"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Lc3_2018_%28263682303%29_%28cropped%29.jpeg" 
-                                        alt="Image not available" width="200" height="300">
+                                        alt="Picture of Linus Torvalds" width="200" height="300">
                                     </div>
                                     <figcaption><pre><em>Fig.3: </em>Linus Torvalds in 2018</pre></figcaption>
                                 </figure>
@@ -156,7 +156,7 @@
                             <td class="imageColumn">
                                 <figure>
                                     <div class="imgbox"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Ada_Byron_daguerreotype_by_Antoine_Claudet_1843_or_1850.jpg" 
-                                        alt="Image not available" width="200" height="300">
+                                        alt="Picture of Ada Lovelace" width="200" height="300">
                                     </div>
                                     <figcaption><pre><em>Fig.4: </em> a Daguerreotype of Ada Lovelace <br>by Antoine Claudet (c. 1843).</pre></figcaption>
                                 </figure>
@@ -302,6 +302,7 @@
                             Scientists Throughout History</a>
                         </li>
                     </ul>
+                    <div><button id="#topButton"><a href="#top">Back to the top of the page</a></button></div>
             </section>
         </div>
     </body>
@@ -309,3 +310,7 @@
 
 <!-- We developed our site using two different computers - one running windows 11, the other running MacOS, during testing (on google chrome, microsoft edge and safari) we encountered no difference in our website, we did however have problems with our print functionality. Using the Chrome page printer the table would be too wide and go out of the bounds of the page
 therefore we decided to change the style of the table when printing so that it fits no matter the size (using display:flex). We tested our mobile functionality using Chrome Dev Tools. With the help of this tool we came to the conclusion that having a horizontal table was impractical and ugly, so we opted to have our table span vertically when the screen size is sufficiently small (using display:flex). -->
+
+<!-- To comply with the WCAG 1.1 guideline we provide alternative text to all images on our page, for 1.3 we use flex design and a grid layout that automatically changes structure depending on the resolution and device positioning.
+1.4 -  we use clear contrasting colors for any and all data representation. 2.1 - the entire page can be easily traversed using only the tab button, all information and all links can be accessed without the use of the mouse.
+2.4 We gave purpose to each link and eased the navigation by not creating large spaces between the texts.-->
