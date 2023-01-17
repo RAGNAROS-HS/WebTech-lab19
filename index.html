@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script src="form_submit.js"></script>
         <link rel="stylesheet" type="text/css" href="responsive_design.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
@@ -9,9 +10,8 @@
     <body>
         <div id="container">
             <section id="tableSection">
-                <form action="https://wt.ops.labs.vu.nl/api23/c0a0bdb0" method="post">
-                    <h1>Photo album of famous CS (Computer Science) personas.</h1>
                     <table class="top">
+                        <caption><h1>Photo album of famous CS (Computer Science) personas.</h1></caption>
                         <caption>"A good programmer is someone who always looks both ways before crossing a one-way street."</caption>
 
                         <tr class="headerRow">
@@ -196,6 +196,7 @@
                             </td>
                         </tr>
 
+                        <form class = 'submit'>
                         <tr>
                             <td>
                                 <label for="image">image:</label>
@@ -217,11 +218,16 @@
                                 <label for="description">description:</label>
                                 <input type="text" id="description" name="description" required><br>
                             </td>
+                            
                         </tr>
+
+                        <tr>
+                            <td>
+                                <input id="submitButton" type="submit" value="Submit">
+                            </td>
+                        </tr>
+                        </form>
                     </table>
-                    <br>
-                    <input id="submitButton" type="submit" value="Submit">
-                </form>
             </section>
         </div>
 
