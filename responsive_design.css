@@ -151,12 +151,12 @@ a:hover {
     background-color: yellow;
 }
 a:link {
-    color: forestgreen;
-    text-decoration-color: hotpink;
+    color: blue;
+    text-decoration-color: violet;
 }
 a:visited {
-    color: red;
-    text-decoration-color: orange;
+    color: purple;
+    text-decoration-color: magenta;
 }
 a:active {
     background-color:cyan;
@@ -185,6 +185,14 @@ select:focus {
 
 #submitButton:hover{
     background-color: hotpink;
+}
+
+#topButton{
+    margin: auto;
+    background-color : ivory;
+    border-radius :2px;
+    text-align: center;
+    width: 100%;
 }
 
 @media print {
