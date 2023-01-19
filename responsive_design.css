@@ -125,6 +125,14 @@ p.postText {
     page-break-after: auto;
 }
 
+.resetButton {
+    background-color : ivory;
+    border-radius :2px;
+    display:block;
+    width:100%;
+
+}
+
 #container1 {
     font: 100;
     display:flex;
