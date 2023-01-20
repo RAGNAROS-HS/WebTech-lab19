@@ -60,9 +60,35 @@ window.addEventListener('DOMContentLoaded', (event) => {
             fetch("https://wt.ops.labs.vu.nl/api23/99a18706/reset", {
                 method: 'GET',
             })
-            .then(response=>response.json())
             .then(data=>{ console.log(data); 
             })
+            .then(function(){
+                let nbRows = document.querySelectorAll('tr').length;
+                let table = document.getElementById("table")
+
+                for(var i = 1; i < nbRows; i++){
+                    /*
+                    let howMany = document.querySelectorAll('tr');
+                    let last = howMany[howMany.length];
+                    */
+                    //nbRows = nbRows - 1;
+                    table.deleteRow(i);
+                }
+            })
+            .then(function(){
+                fetch("https://wt.ops.labs.vu.nl/api23/99a18706",{})
+                .then(function(response){
+                    return response.json();
+                })
+                .then(function(data){
+                    data.forEach(function(person){
+                        const markup = '<tr><td><div><img src = "'+person.image+'"></div></td><td>'+person.author+'</td><td><p><strong>'+person.author+'</strong>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.name+'</p><p>This talented persona is responsible for concepts like:</p><p>'+person.description+'</p></td></tr>';
+                        let hahaKitten = document.getElementsByTagName("tr")[0];
+                        hahaKitten.insertAdjacentHTML('afterend', markup);
+                    });
+                })
+            })
+
         }
 
 /*
