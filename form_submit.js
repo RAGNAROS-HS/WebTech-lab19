@@ -91,6 +91,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
             table.rows[rIndex].cells[4].innerHTML = document.getElementById("tags").value;
             table.rows[rIndex].cells[5].innerHTML = document.getElementById("description").value;
         }
+
+
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("modalButton");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.addEventListener("click", function(){
+        modal.style.display = "block";
+    })
+
+    span.addEventListener("click", function(){
+        modal.style.display = "none";
+    })
+
+    window.addEventListener("click", function(){
+        if(event.target == modal){
+            modal.style.display = "none";
+        }
+    })
 });
 
 
