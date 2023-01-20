@@ -8,6 +8,7 @@
         <title>Photo album of famous computer science personas</title>
     </head>
     <body>
+        <div><a href="#bot">Go to bottom of page</a></div>
         <div id="container">
             <section id="tableSection">
                     <table id="table">
@@ -21,44 +22,42 @@
                             <th>Tags</th>
                             <th>Description</th>
                         </tr>
- 
-                        <form id = 'form'>
                         <tr>
-                            <td>
-                                <label for="image">image:</label>
-                                <input type="url" id="image" name="image" required>
-                            </td>
-                            <td>
-                                <label for="author">author:</label>
-                                <input type="text" id="author" name="author" required>
-                            </td>
-                            <td>
-                                <label for="alt">alt:</label>
-                                <input type="text" id="alt" name="alt" required>
-                            </td>
-                            <td>
-                                <label for="tags">tags:</label>
-                                <input type="text" id="tags" name="tags" required>
-                            </td>
-                            <td>
-                                <label for="description">description:</label>
-                                <input type="text" id="description" name="description" required><br>
-                            </td>
-                            
-                        </tr>
+                        <td><button id="modalButton">Open Form</button></td>
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <p>                       
+                                    <form id = 'form'>
 
-                        <tr>
-                            <td>
-                                <input id="submitButton" type="submit" value="Submit">
-                            </td>
-                        </form>
-                            <td>
-                                <button type="button">Reset</button>
-                            </td>
-                            <td>
-                                <button type="button">Update</button>
-                            </td>
+                                            <label for="image">image:</label>
+                                            <input type="url" id="image" name="image" required>
+
+                                            <label for="author">author:</label>
+                                            <input type="text" id="author" name="author" required>
+
+                                            <label for="alt">alt:</label>
+                                            <input type="text" id="alt" name="alt" required>
+
+                                            <label for="tags">tags:</label>
+                                            <input type="text" id="tags" name="tags" required>
+
+                                            <label for="description">description:</label>
+                                            <input type="text" id="description" name="description" required><br>
+            
+                                            <input id="submitButton" type="submit" value="Submit">
+                                    </form>
+                                </p>
+                            </div>
+                        </div>
                         </tr>
+                        <td>
+                            <button type="button">Reset</button>
+                        </td>
+                        <td>
+                            <button type="button">Update</button>
+                        </td>
+                    </tr>
                     </table>
             </section>
         </div>
@@ -79,7 +78,7 @@
                             Scientists Throughout History</a>
                         </li>
                     </ul>
-                    <div><button id="#topButton"><a href="#top">Back to the top of the page</a></button></div>
+                    <div id="bot"><button id="#topButton"><a href="#top">Back to the top of the page</a></button></div>
             </section>
         </div>
     </body>
