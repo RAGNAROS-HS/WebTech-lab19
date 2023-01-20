@@ -66,13 +66,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 let nbRows = document.querySelectorAll('tr').length;
                 let table = document.getElementById("table")
 
-                for(var i = 1; i < nbRows; i++){
+                for(var i = 1; i < nbRows-2; i++){
                     /*
                     let howMany = document.querySelectorAll('tr');
                     let last = howMany[howMany.length];
                     */
                     //nbRows = nbRows - 1;
-                    table.deleteRow(i);
+                    table.deleteRow(1);
                 }
             })
             .then(function(){
