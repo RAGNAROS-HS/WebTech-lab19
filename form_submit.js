@@ -1,17 +1,37 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
-    
+
+    var authors = [];
+    function isInVector(element){
+        var result = false;
+        for(var i=0; i < authors.length; i++){
+            if(authors.at(i) == element){
+                result = true;
+                return result;
+            }
+        }
+        return result;
+    }
+
     fetch("https://wt.ops.labs.vu.nl/api23/99a18706",{})
     .then(function(response){
         return response.json();
     })
     .then(function(data){
         data.forEach(function(person){
-            const markup = '<tr><td><div><img src = "'+person.image+'"></div></td><td>'+person.author+'</td><td><p><strong>'+person.author+'</strong>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.name+'</p><p>This talented persona is responsible for concepts like:</p><p>'+person.description+'</p></td></tr>';
+            if(isInVector(person.author) == false){
+                authors.push(person.author);
+                const insert = '<p>'+person.author+'</p>'
+                let list = document.getElementById("sourcesList");
+                list.insertAdjacentHTML("afterbegin", insert);
+            }
+            const markup = '<tr><td><div><img src = "'+person.image+'"></div></td><td>'+person.author+'</td><td><p><strong>'+person.author+'</strong>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td></tr>';
             let rowsNB = document.querySelectorAll('tr');
             let lastRow = rowsNB[rowsNB.length - 3];
             lastRow.insertAdjacentHTML('afterend', markup);
-        });
+
+        },
+        );
     })
 
     var form = document.getElementById('form');
@@ -45,7 +65,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
             console.log(data);
         })
         .then(function(){
-            const markup = '<tr><td><div><img src = "'+imageInput+'"></div></td><td>'+authorInput+'</td><td><p><strong>'+authorInput+'</strong>'+tagsInput+'</p></td><td><p>'+tagsInput+'</p></td><td><p><b>This is a photo of '+authorInput+'</p><p>This talented persona is responsible for concepts like:</p><p>'+descriptionInput+'</p></td></tr>';
+            if(isInVector(authorInput) == false){
+                authors.push(authorInput);
+                const insert = '<p>'+authorInput+'</p>'
+                let list = document.getElementById("sourcesList");
+                list.insertAdjacentHTML("afterbegin", insert);
+            }
+            const markup = '<tr><td><div><img src = "'+imageInput+'"></div></td><td>'+authorInput+'</td><td><p><strong>'+authorInput+'</strong>'+tagsInput+'</p></td><td><p>'+tagsInput+'</p></td><td><p><b>This is a photo of '+authorInput+'</p><p>'+descriptionInput+'</p></td></tr>';
             let rowsNB = document.querySelectorAll('tr');
             let lastRow = rowsNB[rowsNB.length - 3];
             lastRow.insertAdjacentHTML('afterend', markup);
@@ -53,7 +79,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         });
 
-        let reset = document.getElementsByTagName("button")[0];
+        let reset = document.getElementsByTagName("button")[1];
         reset.addEventListener("click", resetFunction);
 
         function resetFunction() {
@@ -61,11 +87,40 @@ window.addEventListener('DOMContentLoaded', (event) => {
             fetch("https://wt.ops.labs.vu.nl/api23/99a18706/reset", {
                 method: 'GET',
             })
-            .then(response=>response.json())
-            .then(data=>{ console.log(data); })
+            .then(data=>{ console.log(data); 
+            })
+            .then(function(){
+                let nbRows = document.querySelectorAll('tr').length;
+                let table = document.getElementById("table")
+                for(var i = 1; i < nbRows-2; i++){
+                    table.deleteRow(1);
+                }
+                authors.length = 0;
+                document.getElementById("sourcesList").innerHTML = "";
+            })
+            .then(function(){
+                fetch("https://wt.ops.labs.vu.nl/api23/99a18706",{})
+                .then(function(response){
+                    return response.json();
+                })
+                .then(function(data){
+                    data.forEach(function(person){
+                        if(isInVector(person.author) == false){
+                            authors.push(person.author);
+                            const insert = '<p>'+person.author+'</p>'
+                            let list = document.getElementById("sourcesList");
+                            list.insertAdjacentHTML("afterbegin", insert);
+                        }
+                        const markup = '<tr><td><div><img src = "'+person.image+'"></div></td><td>'+person.author+'</td><td><p><strong>'+person.author+'</strong>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td></tr>';
+                        let hahaKitten = document.getElementsByTagName("tr")[0];
+                        hahaKitten.insertAdjacentHTML('afterend', markup);
+                    });
+                })
+            })
+
         }
 
-
+/*
         let update = document.getElementsByTagName("button")[1];
         update.addEventListener("click", updateFunction);
         var table = document.getElementById("table"),rIndex;
@@ -92,7 +147,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             table.rows[rIndex].cells[5].innerHTML = document.getElementById("description").value;
         }
 
-
+*/
     var modal = document.getElementById("myModal");
     var btn = document.getElementById("modalButton");
     var span = document.getElementsByClassName("close")[0];
@@ -109,7 +164,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         if(event.target == modal){
             modal.style.display = "none";
         }
-    })
+    })    
 });
 
 
