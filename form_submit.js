@@ -1,6 +1,5 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
-    
     fetch("https://wt.ops.labs.vu.nl/api23/99a18706",{})
     .then(function(response){
         return response.json();
@@ -53,7 +52,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         });
 
-        let reset = document.getElementsByTagName("button")[0];
+        let reset = document.getElementsByTagName("button")[1];
         reset.addEventListener("click", resetFunction);
 
         function resetFunction() {
@@ -62,10 +61,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 method: 'GET',
             })
             .then(response=>response.json())
-            .then(data=>{ console.log(data); })
+            .then(data=>{ console.log(data); 
+            })
         }
 
-
+/*
         let update = document.getElementsByTagName("button")[1];
         update.addEventListener("click", updateFunction);
         var table = document.getElementById("table"),rIndex;
@@ -92,7 +92,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             table.rows[rIndex].cells[5].innerHTML = document.getElementById("description").value;
         }
 
-
+*/
     var modal = document.getElementById("myModal");
     var btn = document.getElementById("modalButton");
     var span = document.getElementsByClassName("close")[0];
@@ -109,7 +109,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         if(event.target == modal){
             modal.style.display = "none";
         }
-    })
+    })    
 });
 
 
