@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             console.log(data);
         })
         .then(function(){
-            const markup = '<tr><td><div><img src = "'+imageInput+'"></div></td><td>'+authorInput+'</td><td><p><strong>'+authorInput+'</strong>'+tagsInput+'</p></td><td><p>'+tagsInput+'</p></td><td><p><b>This is a photo of '+authorInput+'</p><p>This talented persona is responsible for concepts like:</p><p>'+descriptionInput+'</p></td></tr>';
+            const markup = '<tr><td><div><img src = "'+imageInput+'"></div></td><td>'+authorInput+'</td><td><p><strong>'+authorInput+'</strong>'+tagsInput+'</p></td><td><p>'+tagsInput+'</p></td><td><p><b>This is a photo of '+authorInput+'</p><p>'+descriptionInput+'</p></td></tr>';
             let rowsNB = document.querySelectorAll('tr');
             let lastRow = rowsNB[rowsNB.length - 3];
             lastRow.insertAdjacentHTML('afterend', markup);
@@ -82,7 +82,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 })
                 .then(function(data){
                     data.forEach(function(person){
-                        const markup = '<tr><td><div><img src = "'+person.image+'"></div></td><td>'+person.author+'</td><td><p><strong>'+person.author+'</strong>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.name+'</p><p>This talented persona is responsible for concepts like:</p><p>'+person.description+'</p></td></tr>';
+                        const markup = '<tr><td><div><img src = "'+person.image+'"></div></td><td>'+person.author+'</td><td><p><strong>'+person.author+'</strong>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td></tr>';
                         let hahaKitten = document.getElementsByTagName("tr")[0];
                         hahaKitten.insertAdjacentHTML('afterend', markup);
                     });
