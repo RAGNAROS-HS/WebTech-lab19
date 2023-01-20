@@ -30,6 +30,8 @@ td{
     margin-left: 5px;
     border-collapse:collapse;
     border:3px solid black;
+    background-color: aliceblue;
+    color: black;
 }
 
 figure {
@@ -99,15 +101,6 @@ p, li {
     caption-side: top;
   }
 
-.row1 {
-    background-color: aliceblue;
-    color: black;
-}
-
-.row2 {
-    background-color: lightgray;
-    color: black;
-}
 
 .altColumn {
     text-transform: capitalize;
