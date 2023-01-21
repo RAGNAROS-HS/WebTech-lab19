@@ -120,12 +120,15 @@ p.postText {
 
 .resetButton {
     background-color : ivory;
-    border-radius :2px;
-    display:block;
+    border-radius :3px;
     width:100%;
-
+    display: inline-flex;
+    text-align: center;
 }
 
+.resetButton:hover{
+    background-color: magenta;
+}
 /* We used https://www.w3schools.com/howto/howto_css_modals.asp to help with creating our modal*/
 
 .modal{
@@ -206,6 +209,10 @@ select:focus {
     background-color: ivory;
 }
 
+#modalButton:hover{
+    background-color: magenta;
+}
+
 #sourcesList {
     list-style-type: "\1F913";
     orphans: 3;
@@ -237,6 +244,14 @@ select:focus {
     width: 100%;
 }
 
+#bottomButton{
+    margin: auto;
+    background-color : ivory;
+    border-radius :2px;
+    text-align: center;
+    width: 100%;
+}
+
 @media print {
     
     td,ol, ul {
@@ -248,7 +263,7 @@ select:focus {
     }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
     tr {
         display: grid;
     }
