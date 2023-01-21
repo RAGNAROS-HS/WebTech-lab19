@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 let list = document.getElementById("sourcesList");
                 list.insertAdjacentHTML("afterbegin", insert);
             }
-            const markup = '<tr><td><div><img src = "'+person.image+'"></div></td><td>'+person.author+'</td><td><p><strong>'+person.author+'</strong>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td></tr>';
+            const markup = '<tr><td><div><img src = "'+person.image+'" alt="Picture of '+person.author+'"></div></td><td>'+person.author+'</td><td><p>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td></tr>';
             let rowsNB = document.querySelectorAll('tr');
             let lastRow = rowsNB[rowsNB.length - 3];
             lastRow.insertAdjacentHTML('afterend', markup);
@@ -71,7 +71,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 let list = document.getElementById("sourcesList");
                 list.insertAdjacentHTML("afterbegin", insert);
             }
-            const markup = '<tr><td><div><img src = "'+imageInput+'"></div></td><td>'+authorInput+'</td><td><p><strong>'+authorInput+'</strong>'+tagsInput+'</p></td><td><p>'+tagsInput+'</p></td><td><p><b>This is a photo of '+authorInput+'</p><p>'+descriptionInput+'</p></td></tr>';
+            const markup = '<tr><td><div><img src = "'+imageInput+'" alt="Picture of '+authorInput+'"></div></td><td>'+authorInput+'</td><td><p><strong>'+authorInput+'</strong>'+tagsInput+'</p></td><td><p>'+tagsInput+'</p></td><td><p><b>This is a photo of '+authorInput+'</p><p>'+descriptionInput+'</p></td></tr>';
             let rowsNB = document.querySelectorAll('tr');
             let lastRow = rowsNB[rowsNB.length - 3];
             lastRow.insertAdjacentHTML('afterend', markup);
@@ -111,7 +111,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                             let list = document.getElementById("sourcesList");
                             list.insertAdjacentHTML("afterbegin", insert);
                         }
-                        const markup = '<tr><td><div><img src = "'+person.image+'"></div></td><td>'+person.author+'</td><td><p><strong>'+person.author+'</strong>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td></tr>';
+                        const markup = '<tr><td><div><img src = '+person.image+' alt="Picture of '+person.author+'"></div></td><td>'+person.author+'</td><td><p>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td></tr>';
                         let hahaKitten = document.getElementsByTagName("tr")[0];
                         hahaKitten.insertAdjacentHTML('afterend', markup);
                     });
