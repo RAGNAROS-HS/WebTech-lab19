@@ -1,7 +1,11 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
 
+    var nameButtons = [];
     var authors = [];
+    let filterbar = document.getElementById("filterBar");
+
+    
     function isInVector(element){
         var result = false;
         for(var i=0; i < authors.length; i++){
@@ -25,14 +29,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 let list = document.getElementById("sourcesList");
                 list.insertAdjacentHTML("afterbegin", insert);
             }
-            const markup = '<tr><td><div><img src = "'+person.image+'" alt="Picture of '+person.author+'"></div></td><td>'+person.author+'</td><td><p>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td></tr>';
+            const markup = '<tr><td><div><img src = "'+person.image+'" alt="Picture of '+person.author+'"></div></td><td><button class="nameButton">'+person.author+'</button></td><td><p>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td></tr>';
             let rowsNB = document.querySelectorAll('tr');
             let lastRow = rowsNB[rowsNB.length - 3];
             lastRow.insertAdjacentHTML('afterend', markup);
-
         },
         );
     })
+    .then(function(){
+        nameButtons = document.getElementsByClassName("nameButton");
+        for (var i = 0; i < nameButtons.length; i++) {
+            let btn = nameButtons[i]
+            btn.addEventListener('click', function(){
+                filterbar.value = btn.textContent;
+                filterbar.dispatchEvent(new KeyboardEvent('keydown', {'key': 'a'}));
+            });
+            console.log("listener added");
+        }
+    })
+
 
     var form = document.getElementById('form');
 
@@ -71,15 +86,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 let list = document.getElementById("sourcesList");
                 list.insertAdjacentHTML("afterbegin", insert);
             }
-            const markup = '<tr><td><div><img src = "'+imageInput+'" alt="Picture of '+authorInput+'"></div></td><td>'+authorInput+'</td><td><p><strong>'+authorInput+'</strong>'+tagsInput+'</p></td><td><p>'+tagsInput+'</p></td><td><p><b>This is a photo of '+authorInput+'</p><p>'+descriptionInput+'</p></td></tr>';
+            const markup = '<tr><td><div><img src = "'+imageInput+'" alt="Picture of '+authorInput+'"></div></td><td><button class="nameButton">'+authorInput+'</button></td><td><p><strong>'+authorInput+'</strong>'+tagsInput+'</p></td><td><p>'+tagsInput+'</p></td><td><p><b>This is a photo of '+authorInput+'</p><p>'+descriptionInput+'</p></td></tr>';
             let rowsNB = document.querySelectorAll('tr');
             let lastRow = rowsNB[rowsNB.length - 3];
             lastRow.insertAdjacentHTML('afterend', markup);
-        });
+        })
+        .then(function(){
+            nameButtons = document.getElementsByClassName("nameButton");
+            nameButtons[nameButtons.length].addEventListener('click', function(){
+                filterbar.innerText = nameButtons[nameButtons.length].innerText;
+                console.log("listener added");
+            });
+        })
 
         });
 
-        let reset = document.getElementsByTagName("button")[1];
+        let reset = document.getElementsByClassName("resetButton")[0];
         reset.addEventListener("click", resetFunction);
 
         function resetFunction() {
@@ -111,10 +133,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
                             let list = document.getElementById("sourcesList");
                             list.insertAdjacentHTML("afterbegin", insert);
                         }
-                        const markup = '<tr><td><div><img src = '+person.image+' alt="Picture of '+person.author+'"></div></td><td>'+person.author+'</td><td><p>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td></tr>';
+                        const markup = '<tr><td><div><img src = '+person.image+' alt="Picture of '+person.author+'"></div></td><td><button class="nameButton">'+person.author+'</button></td><td><p>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td></tr>';
                         let hahaKitten = document.getElementsByTagName("tr")[0];
                         hahaKitten.insertAdjacentHTML('afterend', markup);
+
                     });
+                })
+                .then(function(){
+                    nameButtons = document.getElementsByClassName("nameButton");
+                    for (var i = 0; i < nameButtons.length; i++) {
+                        btn = nameButtons[i];
+                        btn.addEventListener('click', function(){
+                            filterbar.value = btn.textContent;
+                        });
+                        console.log(btn.textContent);
+                        console.log("listener added")
+                    }
                 })
             })
 
@@ -164,7 +198,48 @@ window.addEventListener('DOMContentLoaded', (event) => {
         if(event.target == modal){
             modal.style.display = "none";
         }
-    })    
+    })
+
+    
+
+    filterbar.addEventListener("keypress", function(){
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("filterBar");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("table");
+        tr = table.getElementsByTagName("tr");
+        tr.length -= 2;
+
+        for(i = 0; i < tr.length; i++){
+            td = tr[i].getElementsByTagName("td")[1];
+            if(td){
+                txtValue = td.textContent || td.innerText;
+                if(txtValue.toUpperCase().indexOf(filter) > -1){
+                    tr[i].style.display = "";
+                }else{
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+    })
+
+    console.log(nameButtons.length);
+/*
+    for (var i = 0; i < nameButtons.length; i++) {
+        nameButtons[i].addEventListener('click', namefunction(i));
+        console.log("listener added")
+    }
+*/
+    function namefunction(i){
+       // console.log(nameButtons[i].innerText)
+        //console.log(filterbar.innerText)
+        console.log("click");
+        filterbar.innerText = this.innerText;
+    }
+
+    /*For the filterable gallery functionality we will be using a modified implementation of the search bar on this site: https://www.w3schools.com/howto/howto_js_filter_table.asp */
+
 });
 
 
