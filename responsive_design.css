@@ -164,6 +164,19 @@ p.postText {
     cursor: pointer;
 }
 
+#updateModal{
+    display: none;
+    position:fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    margin:auto;
+    
+}
+
 #container1 {
     font: 100;
     display:flex;
