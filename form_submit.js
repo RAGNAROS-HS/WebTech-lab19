@@ -7,6 +7,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var filterModal = document.getElementById("filterModal");
     var filterClose = document.getElementsByClassName("close")[1];
     
+    filterModal.style.display = "none";
+
     function isInVector(element){
         var result = false;
         for(var i=0; i < authors.length; i++){
@@ -23,6 +25,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         return response.json();
     })
     .then(function(data){
+        console.log(data);
         data.forEach(function(person){
             if(isInVector(person.author) == false){
                 authors.push(person.author);
@@ -30,7 +33,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 let list = document.getElementById("sourcesList");
                 list.insertAdjacentHTML("afterbegin", insert);
             }
-            const markup = '<tr><td><div><img src = "'+person.image+'" alt="Picture of '+person.author+'"></div></td><td><button class="nameButton">'+person.author+'</button></td><td><p>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td></tr>';
+            const markup = '<tr><td><div><img src = "'+person.image+'" alt="Picture of '+person.author+'"></div></td><td><button class="nameButton">'+person.author+'</button></td><td><p>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td><td><p>'+person.id+'</p></td></tr>';
             let rowsNB = document.querySelectorAll('tr');
             let lastRow = rowsNB[rowsNB.length - 2];
             lastRow.insertAdjacentHTML('afterend', markup);
@@ -63,7 +66,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 who = document.getElementById("whoFilter");
                 who.innerText = "Now filtering by: "+filter;
             });
-            console.log("listener added");
+        }
+    })
+    .then(function(){
+        editButtons = document.getElementsByClassName("editButton");
+        for(i = 0; i < editButtons.length; i++){
+            let btn = editButtons[i];
+            btn.addEventListener('click', function(){
+                console.log("ahaha")
+            })
         }
     })
 
@@ -89,7 +100,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 author: authorInput,
                 alt: altInput,
                 tags: tagsInput,
-                description: descriptionInput
+                description: descriptionInput,
             }),
         })
         .then(function(response){
@@ -105,7 +116,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 let list = document.getElementById("sourcesList");
                 list.insertAdjacentHTML("afterbegin", insert);
             }
-            const markup = '<tr><td><div><img src = "'+imageInput+'" alt="Picture of '+authorInput+'"></div></td><td><button class="nameButton">'+authorInput+'</button></td><td><p><strong>'+authorInput+'</strong>'+tagsInput+'</p></td><td><p>'+tagsInput+'</p></td><td><p><b>This is a photo of '+authorInput+'</p><p>'+descriptionInput+'</p></td></tr>';
+            const markup = '<tr><td><div><img src = "'+imageInput+'" alt="Picture of '+authorInput+'"></div></td><td><button class="nameButton">'+authorInput+'</button></td><td><p><strong>'+authorInput+'</strong>'+tagsInput+'</p></td><td><p>'+tagsInput+'</p></td><td><p><b>This is a photo of '+authorInput+'</p><p>'+descriptionInput+'</p></td><td><p>'+'</p></td></tr>';
             let rowsNB = document.querySelectorAll('tr');
             let lastRow = rowsNB[rowsNB.length - 3];
             lastRow.insertAdjacentHTML('afterend', markup);
@@ -134,7 +145,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 }
                 who = document.getElementById("whoFilter");
                 who.innerText = "Now filtering by: "+filter;
-                console.log("listener added");
             });
         })
 
@@ -153,7 +163,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             .then(function(){
                 let nbRows = document.querySelectorAll('tr').length;
                 let table = document.getElementById("table")
-                for(var i = 1; i < nbRows-2; i++){
+                for(var i = 1; i < nbRows-1; i++){
                     table.deleteRow(1);
                 }
                 authors.length = 0;
@@ -172,7 +182,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                             let list = document.getElementById("sourcesList");
                             list.insertAdjacentHTML("afterbegin", insert);
                         }
-                        const markup = '<tr><td><div><img src = '+person.image+' alt="Picture of '+person.author+'"></div></td><td><button class="nameButton">'+person.author+'</button></td><td><p>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td></tr>';
+                        const markup = '<tr><td><div><img src = '+person.image+' alt="Picture of '+person.author+'"></div></td><td><button class="nameButton">'+person.author+'</button></td><td><p>'+person.alt+'</p></td><td><p>'+person.tags+'</p></td><td><p><b>This is a photo of '+person.author+'</p><p>'+person.description+'</p></td><td><p>'+person.id+'</p></td></tr>';
                         let hahaKitten = document.getElementsByTagName("tr")[0];
                         hahaKitten.insertAdjacentHTML('afterend', markup);
 
@@ -209,34 +219,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         }
 
-/*
-        let update = document.getElementsByTagName("button")[1];
-        update.addEventListener("click", updateFunction);
-        var table = document.getElementById("table"),rIndex;
-
-            
-        for(var i = 1; i < table.rows.length - 2; i++){
-            table.rows[i].addEventListener("click",function(){
-                rIndex = this.rowIndex;
-                console.log(rIndex);
-                document.getElementById("image").value = table.rows[i].cells[1].innerHTML;
-                document.getElementById("author").value = table.rows[i].cells[2].innerHTML;
-                document.getElementById("alt").value = table.rows[i].cells[3].innerHTML;
-                document.getElementById("tags").value = table.rows[i].cells[4].innerHTML;
-                document.getElementById("description").value = table.rows[i].cells[5].innerHTML;
-            })
-            console.log("listener added");
-        }                 
-                    
-        function updateFunction(){
-            table.rows[rIndex].cells[1].innerHTML = document.getElementById("image").value;
-            table.rows[rIndex].cells[2].innerHTML = document.getElementById("author").value;
-            table.rows[rIndex].cells[3].innerHTML = document.getElementById("alt").value;
-            table.rows[rIndex].cells[4].innerHTML = document.getElementById("tags").value;
-            table.rows[rIndex].cells[5].innerHTML = document.getElementById("description").value;
-        }
-
-*/
     var modal = document.getElementById("myModal");
     var btn = document.getElementById("modalButton");
     var span = document.getElementsByClassName("close")[0];
@@ -264,8 +246,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         table = document.getElementById("table");
         tr = table.getElementsByTagName("tr");
         tr.length -= 2;
-        filterModal.style.display = "block";
-
+        filterModal.style.display = "none";
 
         for(i = 0; i < tr.length; i++){
             td = tr[i].getElementsByTagName("td")[1];
@@ -283,10 +264,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     /*For the filterable gallery functionality we will be using a modified implementation of the search bar on this site: https://www.w3schools.com/howto/howto_js_filter_table.asp */
 
-
-
-
-
     filterClose.addEventListener("click", function(){
         filterModal.style.display = "none";
         table = document.getElementById("table");
@@ -296,11 +273,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
             td = tr[i].getElementsByTagName("td")[1];
             if(td){
                 tr[i].style.display = "";
-                console.log("reverting row")
             }
         }
     })
 
+
+    let updateButton = document.getElementsByClassName("updateButton")[0];
+    updateButton.addEventListener('click', function(){
+        
+    })
 
 });
 

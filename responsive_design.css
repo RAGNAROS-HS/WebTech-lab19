@@ -226,6 +226,16 @@ select:focus {
     width: 100%;
 }
 
+.updateButton{
+    background-color:ivory;
+    border-radius: 2px;
+    width: 100%;
+}
+
+.updateButton:hover{
+    background-color: magenta;
+}
+
 #modalButton{
     background-color : ivory;
     border-radius :2px;
