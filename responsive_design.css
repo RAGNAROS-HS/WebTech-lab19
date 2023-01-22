@@ -232,6 +232,10 @@ select:focus {
     width: 100%;
 }
 
+#filterBar{
+    width:90%;
+}
+
 #submitButton:hover{
     background-color: hotpink;
 }
