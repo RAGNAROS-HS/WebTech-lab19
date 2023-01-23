@@ -1,3 +1,5 @@
+/* We used https://www.w3schools.com/howto/howto_css_modals.asp to help with creating our modals*/
+
 :root {
     font-family: "Arial";
     font-size: medium;
@@ -61,7 +63,6 @@ ul {
 
 ol {
     list-style-image: none;
-
 }
 
 th { 
@@ -99,8 +100,7 @@ p, li {
 
 .top caption {
     caption-side: top;
-  }
-
+}
 
 .altColumn {
     text-transform: capitalize;
@@ -129,7 +129,6 @@ p.postText {
 .resetButton:hover{
     background-color: magenta;
 }
-/* We used https://www.w3schools.com/howto/howto_css_modals.asp to help with creating our modal*/
 
 .modal{
     display: none;
@@ -141,7 +140,6 @@ p.postText {
     height: 100%;
     overflow: auto;
     margin:auto;
-    
 }
 
 .modal-content{
@@ -174,7 +172,6 @@ p.postText {
     height: 100%;
     overflow: auto;
     margin:auto;
-    
 }
 
 #container1 {
@@ -184,6 +181,7 @@ p.postText {
     flex-wrap: wrap;
     flex-basis:100%;
 }
+
 #container2 {
     font-variant: small-caps;
     flex-direction: row;
@@ -202,14 +200,17 @@ p.postText {
 a:hover {
     background-color: yellow;
 }
+
 a:link {
     color: blue;
     text-decoration-color: violet;
 }
+
 a:visited {
     color: purple;
     text-decoration-color: magenta;
 }
+
 a:active {
     background-color:cyan;
 }
@@ -230,7 +231,6 @@ select:focus {
     list-style-type: "\1F913";
     orphans: 3;
     orphans: inherit;
-
 }
 
 #submitButton{
@@ -280,7 +280,6 @@ select:focus {
 }
 
 @media print {
-    
     td,ol, ul {
       page-break-inside: avoid;
     }
