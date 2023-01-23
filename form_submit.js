@@ -191,13 +191,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 .then(function(){
                     nameButtons = document.getElementsByClassName("nameButton");
                     for (var i = 0; i < nameButtons.length; i++) {
-                        btn = nameButtons[i];
+                        let btn = nameButtons[i]
                         btn.addEventListener('click', function(){
                             var filter, table, tr, td, i, txtValue;
                             filter = btn.textContent;
                             table = document.getElementById("table");
                             tr = table.getElementsByTagName("tr");
                             tr.length -= 2;
+                            filterModal.style.display = "block";
                     
                             for(i = 0; i < tr.length; i++){
                                 td = tr[i].getElementsByTagName("td")[1];
