@@ -1,14 +1,12 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
 
-    let goopy = document.getElementById("id");
-    goopy.innerHTML = '';
+    let idclear = document.getElementById("id");
+    idclear.innerHTML = '';
     var nameButtons = [];
     var authors = [];
     let filterbar = document.getElementById("filterBar");
-    var filterModal = document.getElementById("filterModal");
-    var filterClose = document.getElementsByClassName("close")[1];
-    
+    var filterModal = document.getElementById("filterModal");    
     filterModal.style.display = "none";
 
     function isInVector(element){
@@ -281,21 +279,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     })
 
-    /*For the filterable gallery functionality we will be using a modified implementation of the search bar on this site: https://www.w3schools.com/howto/howto_js_filter_table.asp */
-/*
-    filterClose.addEventListener("click", function(){
-        filterModal.style.display = "none";
-        table = document.getElementById("table");
-        tr = table.getElementsByTagName("tr");
+    /*For the filterable gallery functionality we will be using a modified implementation of the search bar from this site: https://www.w3schools.com/howto/howto_js_filter_table.asp */
 
-        for(i = 0; i < tr.length; i++){
-            td = tr[i].getElementsByTagName("td")[1];
-            if(td){
-                tr[i].style.display = "";
-            }
-        }
-    })
-*/
     let el = document.getElementById('updateModal');
     let updateButton = document.getElementById("uButton");
     updateButton.addEventListener('click', function(){
