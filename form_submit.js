@@ -223,7 +223,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var modal = document.getElementById("myModal");
     var btn = document.getElementById("modalButton");
     var span = document.getElementsByClassName("close")[0];
-    var span2 = document.getElementsByClassName("close")[1];
+    var updateExitButton = document.getElementsByClassName("close")[1];
     var span3 = document.getElementsByClassName("close")[2];
 
     span3.addEventListener("click", function(){
@@ -299,7 +299,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         el.style.display="block";
     })
 
-    span2.addEventListener("click", function(){
+    updateExitButton.addEventListener("click", function(){
         el.style.display = "none";
         let nbRows = document.querySelectorAll('tr').length;
         let table = document.getElementById("table");
@@ -328,6 +328,36 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 hahaKitten.insertAdjacentHTML('afterend', markup);
             })
         })
+        .then(function(){
+            nameButtons = document.getElementsByClassName("nameButton");
+            for (var i = 0; i < nameButtons.length; i++) {
+                let btn = nameButtons[i];
+                btn.addEventListener('click', function(){
+                    var filter, table, tr, td, i, txtValue;
+                    filter = btn.textContent;
+                    table = document.getElementById("table");
+                    tr = table.getElementsByTagName("tr");
+                    tr.length -= 2;
+                    filterModal.style.display = "block";
+            
+                    for(i = 0; i < tr.length; i++){
+                        td = tr[i].getElementsByTagName("td")[1];
+                        if(td){
+                            txtValue = td.textContent || td.innerText;
+                            if(txtValue == filter){
+                                tr[i].style.display = "";
+                            }else{
+                                tr[i].style.display = "none";
+                            }
+                        }
+                    }
+                    who = document.getElementById("whoFilter");
+                    who.innerText = "Now filtering by: "+filter;
+                })
+            }
+        })
+        let idclear = document.getElementById("id");
+        idclear.innerHTML = '<option value="please select">Please Select</option>';
     })
 
     let box = document.getElementById("id");
@@ -388,7 +418,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 description: descriptionInput,
             })
         })
-        let idclear = document.getElementById("id");
-        idclear.innerHTML = '<option value="please select">Please Select</option>';
     })
 })
