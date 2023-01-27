@@ -3,7 +3,7 @@
 
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
-    let idclear = document.getElementById("id");
+    let idclear = document.getElementById("id1");
     idclear.innerHTML = '<option value="please select">Please Select</option>';
     var nameButtons = [];
     var authors = [];
@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         return result;
     }
 
-    fetch("https://wt.ops.labs.vu.nl/api23/99a18706",{})
+    fetch("http://localhost:3000/get",{})
     .then(function(response){
         return response.json();
     })
@@ -88,18 +88,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
         var altInput = document.getElementById('alt').value;
         var tagsInput = document.getElementById('tags').value;
         var descriptionInput = document.getElementById('description').value;
+        var idInput = document.getElementById('id').value;
 
-        fetch("https://wt.ops.labs.vu.nl/api23/99a18706",{
+        fetch("http://localhost:3000/post",{
             method: 'POST',
             headers:{
                 "Content-Type": "application/json; charset=UTF-8"
             },
             body:JSON.stringify({
-                image: imageInput,
+                id: idInput,
                 author: authorInput,
                 alt: altInput,
                 tags: tagsInput,
-                description: descriptionInput,
+                image: imageInput,
+                description: descriptionInput
             }),
         })
         .then(function(response){
@@ -145,6 +147,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 who = document.getElementById("whoFilter");
                 who.innerText = "Now filtering by: "+filter;
             })
+            modal.style.display = "none";
         })
 
     });
@@ -170,7 +173,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             idclear.innerHTML = '<option value="please select">Please Select</option>';
         })
         .then(function(){
-            fetch("https://wt.ops.labs.vu.nl/api23/99a18706",{})
+            fetch("http://localhost:3000/get",{})
             .then(function(response){
                 return response.json();
             })
@@ -280,7 +283,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let updateButton = document.getElementById("uButton");
 
     updateButton.addEventListener('click', function(){
-        let selectBox = document.getElementById("id");
+        let selectBox = document.getElementById("id1");
         rows = document.getElementsByTagName('tr');
         ids =[];
         rows.length -= 2;
@@ -311,7 +314,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         authors.length = 0;
         document.getElementById("sourcesList").innerHTML = "";
     
-        fetch("https://wt.ops.labs.vu.nl/api23/99a18706",{})
+        fetch("http://localhost:3000/get",{})
         .then(function(response){
             return response.json();
         })
@@ -356,15 +359,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 })
             }
         })
-        let idclear = document.getElementById("id");
+        let idclear = document.getElementById("id1");
         idclear.innerHTML = '<option value="please select">Please Select</option>';
     })
 
-    let box = document.getElementById("id");
+    let box = document.getElementById("id1");
     box.addEventListener("change", function(){
         let rows = document.getElementsByTagName("tr");
         rows.length -= 2;
-        let selected = document.getElementById('id').value;
+        let selected = document.getElementById('id1').value;
         for(index = 1; index < rows.length; index++){
             data = rows[index].getElementsByTagName("td")[5]; 
             if(data){
@@ -401,8 +404,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         var altInput = document.getElementById('alt1').value;
         var tagsInput = document.getElementById('tags1').value;
         var descriptionInput = document.getElementById('description1').value;
-        var imageId = document.getElementById("id").value;
-        let str = "https://wt.ops.labs.vu.nl/api23/99a18706/item/"+imageId;
+        var imageId = document.getElementById("id1").value;
+        let str = "http://localhost:3000/put";
         console.log(str);
 
         fetch(str, {
@@ -416,6 +419,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 alt: altInput,
                 tags: tagsInput,
                 description: descriptionInput,
+                id:imageId
             })
         })
     })
