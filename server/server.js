@@ -8,7 +8,7 @@
 
 const sqlite = require('sqlite3').verbose();
 let db = my_database('./gallery.db');
-
+var bodyParser = require('body-parser');
 // ###############################################################################
 // The database should be OK by now. Let's setup the Web server so we can start
 // defining routes.
@@ -18,26 +18,31 @@ let db = my_database('./gallery.db');
 var express = require("express");
 var app = express();
 
+const cors = require("cors");
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
 // We need some middleware to parse JSON data in the body of our HTTP requests:
 app.use(express.json());
 
 
 // ###############################################################################
 // Routes
+app.post('/post', function(req, res) {
+	console.log(req.body); // the posted data
 
-app.get('/post/:id/:author/:alt/:tags/:image/:description', function(req,res){
 	db.serialize(()=>{
-	  db.run('INSERT INTO gallery(id,author,alt,tags,image,description) VALUES(?,?,?,?,?,?)', [req.params.id, req.params.author, req.params.alt, req.params.tags, req.params.image, req.params.description], function(err) {
-		if (err) {
-		  res.statusCode = 400;
-		  res.send("Error encountered while inserting");
-		}
-		
-		res.statusCode = 201;
-		res.send("New person has been added into the database with ID = "+req.params.id+ ", name = "+req.params.author+", alt = "+req.params.alt+", tags = "+req.params.tags+", image = "+req.params.image+" and description "+req.params.description+"");
-	  });
-  });
-  });
+		db.run('INSERT INTO gallery(id,author,alt,tags,image,description) VALUES(?,?,?,?,?,?)', [req.body.id, req.body.author, req.body.alt, req.body.tags, req.body.image, req.body.description], function(err) {
+		  if (err) {
+			res.statusCode = 400;
+			res.send("Error encountered while inserting");
+		  }
+		  
+		  res.statusCode = 201;
+		  res.send("New person has been added into the database with ID = "+req.body.id+ ", name = "+req.body.author+", alt = "+req.body.alt+", tags = "+req.body.tags+", image = "+req.body.image+" and description "+req.body.description+"");
+		});
+	});
+
+});
 
   app.get('/get', function(req,res){
 	db.serialize(()=>{
@@ -79,9 +84,9 @@ app.get('/post/:id/:author/:alt/:tags/:image/:description', function(req,res){
 	});
   });
 
-  app.get('/put/:author/:alt/:tags/:image/:description/:id', function(req,res){
+  app.put('/put', function(req,res){
 	db.serialize(()=>{
-	  db.run('UPDATE gallery SET author = ?, alt = ?, tags = ?, image = ?, description = ? WHERE id = ?', [req.params.id], function(err){
+	  db.run('UPDATE gallery SET author = ?, alt = ?, tags = ?, image = ?, description = ? WHERE id = ?', [req.body.author, req.body.alt, req.body.tags, req.body.image, req.body.description, req.body.id], function(err){
 		if(err){
 			res.statusCode = 400;
 			res.send("Error encountered while updating");
@@ -92,7 +97,7 @@ app.get('/post/:id/:author/:alt/:tags/:image/:description', function(req,res){
 	});
   });
 
-  app.get('/delete/:id', function(req,res){
+  app.delete('/delete/:id', function(req,res){
   db.serialize(()=>{
     db.run('DELETE FROM gallery WHERE id = ?', req.params.id, function(err) {
       if (err) {
@@ -104,6 +109,8 @@ app.get('/post/:id/:author/:alt/:tags/:image/:description', function(req,res){
     });
   });
 });
+
+
 // 
 // TODO: Add your routes here and remove the example routes once you know how
 //       everything works.
@@ -112,18 +119,11 @@ app.get('/post/:id/:author/:alt/:tags/:image/:description', function(req,res){
 // This example route responds to http://localhost:3000/hello with an example JSON object.
 // Please test if this works on your own device before you make any changes.
 
-app.get("/hello", function(req, res) {
-    response_body = {'Hello': 'World'} ;
-
-    // This example returns valid JSON in the response, but does not yet set the
-    // associated HTTP response header.  This you should do yourself in your
-    // own routes!
-    res.json(response_body) ;
-});
-
 // This route responds to http://localhost:3000/db-example by selecting some data from the
 // database and return it as JSON object.
 // Please test if this works on your own device before you make any changes.
+
+
 app.get('/db-example', function(req, res) {
     // Example SQL statement to select the name of all products from a specific brand
 	db.all(`SELECT * FROM gallery WHERE author=?`, ['Grace Hopper'], function(err, rows) {
