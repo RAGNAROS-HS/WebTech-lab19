@@ -147,6 +147,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 who = document.getElementById("whoFilter");
                 who.innerText = "Now filtering by: "+filter;
             })
+            modal.style.display = "none";
         })
 
     });
@@ -172,7 +173,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             idclear.innerHTML = '<option value="please select">Please Select</option>';
         })
         .then(function(){
-            fetch("https://wt.ops.labs.vu.nl/api23/99a18706",{})
+            fetch("http://localhost:3000/get",{})
             .then(function(response){
                 return response.json();
             })
@@ -313,7 +314,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         authors.length = 0;
         document.getElementById("sourcesList").innerHTML = "";
     
-        fetch("https://wt.ops.labs.vu.nl/api23/99a18706",{})
+        fetch("http://localhost:3000/get",{})
         .then(function(response){
             return response.json();
         })

@@ -34,11 +34,12 @@ app.post('/post', function(req, res) {
 		db.run('INSERT INTO gallery(id,author,alt,tags,image,description) VALUES(?,?,?,?,?,?)', [req.body.id, req.body.author, req.body.alt, req.body.tags, req.body.image, req.body.description], function(err) {
 		  if (err) {
 			res.statusCode = 400;
-			res.send("Error encountered while inserting");
+			res.json("Error encountered while inserting");
 		  }
 		  
 		  res.statusCode = 201;
-		  res.send("New person has been added into the database with ID = "+req.body.id+ ", name = "+req.body.author+", alt = "+req.body.alt+", tags = "+req.body.tags+", image = "+req.body.image+" and description "+req.body.description+"");
+		  res.json(req.body);
+		  //res.send("New person has been added into the database with ID = "+req.body.id+ ", name = "+req.body.author+", alt = "+req.body.alt+", tags = "+req.body.tags+", image = "+req.body.image+" and description "+req.body.description+"");
 		});
 	});
 
@@ -49,16 +50,16 @@ app.post('/post', function(req, res) {
 	  db.all('SELECT * FROM gallery', function(err,row){     
 		if(err){
 			res.statusCode = 404;
-			res.send("Error encountered while getting");
+			res.json("Error encountered while getting");
 		}
 		if (row.length > 0) {
 			res.statusCode = 200;
 			res.json(row);
-			console.log("Entry displayed successfully");
+			console.log();
 		}
 		else {
 			res.statusCode = 204;
-			res.send("The table is empty")
+			res.json({});
 		}
 	  });
 	});
@@ -69,16 +70,16 @@ app.post('/post', function(req, res) {
 	  db.all('SELECT id, author, alt, tags, image, description FROM gallery WHERE id = ?', [req.params.id], function(err,row){     
 		if(err){
 		  res.statusCode = 404;
-		  res.send("Error encountered while getting");
+		  res.json("Error encountered while getting");
 		}
 		if (row.length > 0) {
 			res.statusCode = 200;
 			res.json(row[0]);
-			console.log("Entry displayed successfully");
+			console.log();
 		}
 		else {
 			res.statusCode = 204;
-			res.send("The table is empty")
+			res.json({});
 		}
 	  });
 	});
@@ -89,10 +90,10 @@ app.post('/post', function(req, res) {
 	  db.run('UPDATE gallery SET author = ?, alt = ?, tags = ?, image = ?, description = ? WHERE id = ?', [req.body.author, req.body.alt, req.body.tags, req.body.image, req.body.description, req.body.id], function(err){
 		if(err){
 			res.statusCode = 400;
-			res.send("Error encountered while updating");
+			res.json("Error encountered while updating");
 		}
 		res.statusCode = 200;
-		res.send("Entry updated successfully");
+		res.json({});
 	  });
 	});
   });
@@ -102,10 +103,10 @@ app.post('/post', function(req, res) {
     db.run('DELETE FROM gallery WHERE id = ?', req.params.id, function(err) {
       if (err) {
 		res.statusCode = 400;
-        res.send("Error encountered while deleting");
+        res.json("Error encountered while deleting");
       }
 	  res.statusCode = 200;
-      res.send("Entry deleted");
+      res.json({});
     });
   });
 });
