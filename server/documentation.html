@@ -1,114 +1,113 @@
 <!-- 
 
-    OUR WEB API PROVIDES ACCESS TO A DATABASE CONTAINING A TABLE WITH DATA PREVIOUSLY PROVIDED AS TEST-DATA 
-    AND NEWLY CREATED (BY THE USER) DATA WITH USE OF THE REQUEST RESOURCES
+//  OUR WEB API PROVIDES ACCESS TO A DATABASE CONTAINING A TABLE WITH DATA PREVIOUSLY PROVIDED AS TEST-DATA 
+//  AND NEWLY CREATED (BY THE USER) DATA WITH USE OF THE REQUEST RESOURCES
 
 ****************************************************************************************************************************************
     
-    REQUESTS 
+//  REQUESTS 
 
 *** Our web API is based on REST principles. Data entries are accessed via a standard HTTPS request in UTF-8 format to an API endpoint. ***
 *** Where possible, WEB API uses appropriate HTTP verbs for each action ***
 
-    GET -- retrieves all data from the server 
+//  GET -- retrieves all data from the server 
 
-    POST -- creates data in the database
+//  POST -- creates data in the database
 
-    PUT -- changes and/or replaces data 
+//  PUT -- changes and/or replaces data 
 
-    DELETE -- deletes data
+//  DELETE -- deletes data
 
 ****************************************************************************************************************************************
 
 **************************************minimal CRUD (Create, Retrieve, Update and Delete) interface**************************************
 
 
-DELETE ---- (DELETE)
+//  DELETE ---- (DELETE)
 
-Endpoint URL: http://localhost:3000/delete/:id
+//  Endpoint URL: http://localhost:3000/delete/:id
 
-path parameters:
+//  path parameters:
 
-name            type        description
+//  name            type        description
 
-id (required)   intiger     the id of the table row that the user wants to delete
+//  id (required)   intiger     the id of the table row that the user wants to delete
 
-//This method has no return value.
+//  This method has no return value.
 
 
 
-PUT ---- (UPDATE)
+//  PUT ---- (UPDATE)
 
-Endpoint URL: http://localhost:3000/put/:id/:author/:alt/:tags/:image/:description
+//  Endpoint URL: http://localhost:3000/put/:id/:author/:alt/:tags/:image/:description
 
-path parameters: 
+//  path parameters: 
 
-name        type            description
-image       string          link to the desired image
-author      string          string of the desired image author name
-alt         string          string of alternate image input
-tags        string          string of desired tags
-description string          string of desired description
-id          integer         identifier of desired object
+//  name        type            description
+//  image       string          link to the desired image
+//  author      string          string of the desired image author name
+//  alt         string          string of alternate image input
+//  tags        string          string of desired tags
+//  description string          string of desired description
+//  id          integer         identifier of desired object
 
 // This method returns the updated JSON object of desired id.
 
 
 
-GET ---- (RETRIEVE)
+//  GET ---- (RETRIEVE)
 
-Endpoint URL: http://localhost:3000/get
+//  Endpoint URL: http://localhost:3000/get
 
-path parameters:
+//  path parameters:
 
-No parameters required in the body.
+//  No parameters required in the body.
 
-// This method returns all JSON objects in the table.
-
-
-
-GETBYID ---- (RETRIEVE BY ID)
-
-Endpoint URL: http://localhost:3000/getById/:id
-
-path parameters:
-
-name        type            description
-id          integer         identifier of desired object
-
-// This method returns the JSON object with given id.
+//  This method returns all JSON objects in the table.
 
 
 
-POST ---- (CREATE)
+//  GETBYID ---- (RETRIEVE BY ID)
 
-Endpoint URL: http://localhost:3000/post/:id/:author/:alt/:tags/:image/:description
+//  Endpoint URL: http://localhost:3000/getById/:id
 
-path parameters: 
+//  path parameters:
 
-name        type            description
-image       string          link to the desired image
-author      string          string of the desired image author name
-alt         string          string of alternate image input
-tags        string          string of desired tags
-description string          string of desired description
-id          integer         identifier of desired object
+//  name        type            description
+//  id          integer         identifier of desired object
 
-// This method has no return value.
+//  This method returns the JSON object with given id.
+
+
+
+//  POST ---- (CREATE)
+
+//  Endpoint URL: http://localhost:3000/post/:id/:author/:alt/:tags/:image/:description
+
+//  path parameters: 
+
+//  name        type            description
+//  image       string          link to the desired image
+//  author      string          string of the desired image author name
+//  alt         string          string of alternate image input
+//  tags        string          string of desired tags
+//  description string          string of desired description
+//  id          integer         identifier of desired object
+
+//  This method has no return value.
 
 
 
 ****************************************************************************************************************************************
 
-    STATUS CODE	DESCRIPTION
+//  STATUS CODE	DESCRIPTION
 
 
-    200	OK - The request has succeeded. The client can read the result of the request in the body and the headers of the response.
-    201	Created - The request has been fulfilled and resulted in a new resource being created.
-    204	No Content - The request has succeeded but returns no message body.
-    400	Bad Request - The request could not be understood by the server due to malformed syntax. The message body will contain more information; see Response Schema.
-    404	Not Found - The requested resource could not be found. This error can be due to a temporary or permanent condition.
-    503	Service Unavailable - The server is currently unable to handle the request due to a temporary condition which will be alleviated after some delay. You can choose to resend the request again.
+//  200	OK - The request has succeeded. The client can read the result of the request in the body and the headers of the response.
+//  201	Created - The request has been fulfilled and resulted in a new resource being created.
+//  204	No Content - The request has succeeded but returns no message body.
+//  400	Bad Request - The request could not be understood by the server due to malformed syntax. The message body will contain more information; see Response Schema.
+//  404	Not Found - The requested resource could not be found. This error can be due to a temporary or permanent condition.
 
 ****************************************************************************************************************************************
 

@@ -29,12 +29,11 @@ app.get('/post/:id/:author/:alt/:tags/:image/:description', function(req,res){
 	db.serialize(()=>{
 	  db.run('INSERT INTO gallery(id,author,alt,tags,image,description) VALUES(?,?,?,?,?,?)', [req.params.id, req.params.author, req.params.alt, req.params.tags, req.params.image, req.params.description], function(err) {
 		if (err) {
-		  res.status(404).send("Error 404");
-		  return console.log(err.message);
+		  res.statusCode = 400;
+		  res.send("Error encountered while inserting");
 		}
 		
-		console.log("New person has been added");
-		res.status(200).send("OK");
+		res.statusCode = 201;
 		res.send("New person has been added into the database with ID = "+req.params.id+ ", name = "+req.params.author+", alt = "+req.params.alt+", tags = "+req.params.tags+", image = "+req.params.image+" and description "+req.params.description+"");
 	  });
   });
@@ -44,12 +43,18 @@ app.get('/post/:id/:author/:alt/:tags/:image/:description', function(req,res){
 	db.serialize(()=>{
 	  db.all('SELECT * FROM gallery', function(err,row){     
 		if(err){
-		  res.send("Error encountered while displaying");
-		  return console.error(err.message);
+			res.statusCode = 404;
+			res.send("Error encountered while getting");
 		}
-		res.writeHead(200, {'Content-Type' : 'application/json'});
-		res.json(row);
-		console.log("Entry displayed successfully");
+		if (row.length > 0) {
+			res.statusCode = 200;
+			res.json(row);
+			console.log("Entry displayed successfully");
+		}
+		else {
+			res.statusCode = 204;
+			res.send("The table is empty")
+		}
 	  });
 	});
   });
@@ -58,12 +63,18 @@ app.get('/post/:id/:author/:alt/:tags/:image/:description', function(req,res){
 	db.serialize(()=>{
 	  db.all('SELECT id, author, alt, tags, image, description FROM gallery WHERE id = ?', [req.params.id], function(err,row){     
 		if(err){
-		  res.send("Error encountered while displaying");
-		  return console.error(err.message);
+		  res.statusCode = 404;
+		  res.send("Error encountered while getting");
 		}
-		res.writeHead(200, {'Content-Type' : 'application/json'});
-		res.json(row[0]);
-		console.log("Entry displayed successfully");
+		if (row.length > 0) {
+			res.statusCode = 200;
+			res.json(row[0]);
+			console.log("Entry displayed successfully");
+		}
+		else {
+			res.statusCode = 204;
+			res.send("The table is empty")
+		}
 	  });
 	});
   });
@@ -72,11 +83,11 @@ app.get('/post/:id/:author/:alt/:tags/:image/:description', function(req,res){
 	db.serialize(()=>{
 	  db.run('UPDATE gallery SET author = ?, alt = ?, tags = ?, image = ?, description = ? WHERE id = ?', [req.params.id], function(err){
 		if(err){
-		  res.send("Error encountered while updating");
-		  return console.error(err.message);
+			res.statusCode = 400;
+			res.send("Error encountered while updating");
 		}
+		res.statusCode = 200;
 		res.send("Entry updated successfully");
-		console.log("Entry updated successfully");
 	  });
 	});
   });
@@ -85,12 +96,11 @@ app.get('/post/:id/:author/:alt/:tags/:image/:description', function(req,res){
   db.serialize(()=>{
     db.run('DELETE FROM gallery WHERE id = ?', req.params.id, function(err) {
       if (err) {
+		res.statusCode = 400;
         res.send("Error encountered while deleting");
-        return console.error(err.message);
       }
-	  res.status(200);
+	  res.statusCode = 200;
       res.send("Entry deleted");
-      console.log("Entry deleted");
     });
   });
 });
