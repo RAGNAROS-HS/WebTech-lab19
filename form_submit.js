@@ -5,12 +5,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
     let idclear = document.getElementById("id1");
     idclear.innerHTML = '<option value="please select">Please Select</option>';
+    let idclear2 = document.getElementById("id2");
+    idclear2.innerHTML = '<option value="please select">Please Select</option>';
     var nameButtons = [];
     var authors = [];
     let filterbar = document.getElementById("filterBar");
     var filterModal = document.getElementById("filterModal");  
     var deleteModal = document.getElementById("deleteModal");  
-    deleteModal.style.display = "";
+    deleteModal.style.display = "none";
     filterModal.style.display = "none";
 
     function isInVector(element){
@@ -223,7 +225,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 }
             })
         })
-
     }
 
     var modal = document.getElementById("myModal");
@@ -430,11 +431,38 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let deleteButton = document.getElementById("DButton");
 
     deleteButton.addEventListener("click", function(){
-        deleteModal.style.display = "";
+        let selectBox1 = document.getElementById("id2");
+        rows = document.getElementsByTagName('tr');
+        ids =[];
+        rows.length -= 2;
+
+        for(i = 0; i < rows.length; i++){
+            td = rows[i].getElementsByTagName("td")[5];
+            if(td){
+                ids.push(td.innerText);
+            }
+        }
+
+        for(x = 0; x < ids.length; x++){
+            const markup = '<option value="'+ids[x]+'">'+ids[x]+'</option>';
+            selectBox1.insertAdjacentHTML('beforeend', markup);
+        }
+        deleteModal.style.display = "block";
     })
 
     let deleteCloser = document.getElementById("deleteCloser");
     deleteCloser.addEventListener("click", function(){
         deleteModal.style.display = "none";
+    })
+
+    let deleteSubmit = document.getElementById("delete");
+    deleteSubmit.addEventListener("click", function(){
+        var imageId = document.getElementById("id2").value;
+        let str = "http://localhost:3000/delete/";
+        str = str + imageId;
+
+        fetch(str, {
+            method: 'DELETE',
+        })
     })
 })
