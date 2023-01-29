@@ -8,7 +8,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var nameButtons = [];
     var authors = [];
     let filterbar = document.getElementById("filterBar");
-    var filterModal = document.getElementById("filterModal");    
+    var filterModal = document.getElementById("filterModal");  
+    var deleteModal = document.getElementById("deleteModal");  
+    deleteModal.style.display = "";
     filterModal.style.display = "none";
 
     function isInVector(element){
@@ -117,7 +119,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 let list = document.getElementById("sourcesList");
                 list.insertAdjacentHTML("afterbegin", insert);
             }
-            const markup = '<tr><td><div><img src = "'+imageInput+'" alt="Picture of '+authorInput+'"></div></td><td><button class="nameButton">'+authorInput+'</button></td><td><p><strong>'+authorInput+'</strong>'+tagsInput+'</p></td><td><p>'+tagsInput+'</p></td><td><p><b>This is a photo of '+authorInput+'</p><p>'+descriptionInput+'</p></td><td><p>'+'</p></td></tr>';
+            const markup = '<tr><td><div><img src = "'+imageInput+'" alt="Picture of '+authorInput+'"></div></td><td><button class="nameButton">'+authorInput+'</button></td><td><p><strong>'+authorInput+'</strong>'+tagsInput+'</p></td><td><p>'+tagsInput+'</p></td><td><p><b>This is a photo of '+authorInput+'</p><p>'+descriptionInput+'</p></td><td><p>'+idInput+'</p></td></tr>';
             let rowsNB = document.querySelectorAll('tr');
             let lastRow = rowsNB[rowsNB.length - 3];
             lastRow.insertAdjacentHTML('afterend', markup);
@@ -156,6 +158,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     reset.addEventListener("click", resetFunction);
 
     function resetFunction() {
+        document.querySelectorAll('tr').length;
         fetch("https://wt.ops.labs.vu.nl/api23/99a18706/reset",{
             method: 'GET',
         })
@@ -422,5 +425,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 id:imageId
             })
         })
+    })
+
+    let deleteButton = document.getElementById("DButton");
+
+    deleteButton.addEventListener("click", function(){
+        deleteModal.style.display = "";
+    })
+
+    let deleteCloser = document.getElementById("deleteCloser");
+    deleteCloser.addEventListener("click", function(){
+        deleteModal.style.display = "none";
     })
 })

@@ -126,6 +126,18 @@ p.postText {
     text-align: center;
 }
 
+.deleteButton {
+    background-color : ivory;
+    border-radius :3px;
+    width:100%;
+    display: inline-flex;
+    text-align: center;
+}
+
+.deleteButton:hover {
+    background-color: magenta;
+}
+
 .resetButton:hover{
     background-color: magenta;
 }
@@ -163,6 +175,18 @@ p.postText {
 }
 
 #updateModal{
+    display: none;
+    position:fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    margin:auto;
+}
+
+#deleteModal{
     display: none;
     position:fixed;
     z-index: 1;
