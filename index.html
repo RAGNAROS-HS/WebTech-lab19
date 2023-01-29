@@ -60,6 +60,9 @@
                         <td>
                             <button id="uButton" class="updateButton">Update</button>
                         </td>
+                        <td>
+                            <button id="DButton" class="deleteButton">Delete</button>
+                        </td>
                         </tr>
                     </table>
             </section>
@@ -98,13 +101,27 @@
                             </p>
                         </div>
                     </div>
-
+                    <div id="deleteModal">
+                        <div class = "modal-content">
+                            <span id="deleteCloser" class = "close">&times;</span>
+                            <p>                       
+                                <form id = 'deleteForm'>
+                                        <label for="id">id:</label>
+                                        <select name="id" id="id2">
+                                            <option value="please select">--- Please select ---</option>
+                                        </select>
+                                        <input id="delete" type="submit" value="Submit">
+                                </form>
+                            </p>
+                        </div>
+                    </div>
                     <div id ="filterModal">
                         <div class="modal-content">
                             <span class = "close">&times;</span>
                             <p id="whoFilter">Now filtering by: </p>
                         </div>
                     </div>
+
                     <div><input id="filterBar" type="text" placeholder="Filter by author..."></div>
                     <h2>Author List:</h2>
                     <div id="sourcesList">
