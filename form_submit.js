@@ -231,7 +231,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var btn = document.getElementById("modalButton");
     var span = document.getElementsByClassName("close")[0];
     var updateExitButton = document.getElementsByClassName("close")[1];
-    var span3 = document.getElementsByClassName("close")[2];
+    var span3 = document.getElementsByClassName("close")[3];
 
     span3.addEventListener("click", function(){
         let who = document.getElementById("filterModal");

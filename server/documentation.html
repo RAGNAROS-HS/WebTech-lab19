@@ -21,11 +21,11 @@
 ****************************************************************************************************************************************
 
 **************************************minimal CRUD (Create, Retrieve, Update and Delete) interface**************************************
-
+//All our endpoint URL's start with: http://locahost:3000
 
 //  DELETE ---- (DELETE)
 
-//  Endpoint URL: http://localhost:3000/delete/:id
+//  Endpoint URL: /delete/:id
 
 //  path parameters:
 
@@ -35,11 +35,15 @@
 
 //  This method has no return value.
 
+//STATUS CODE DESCRIPTION
+
+//  200	OK - The request has succeeded, resulting in the object being deleted.
+//  400 Bad Request - The server encountered an error, the request is incorrect and could not be executed.
 
 
 //  PUT ---- (UPDATE)
 
-//  Endpoint URL: http://localhost:3000/put
+//  Endpoint URL: /put
 
 // in the post request you should have a body with a json object containing the following parameters:
 
@@ -55,11 +59,15 @@
 
 // This method returns the updated JSON object of desired id.
 
+//STATUS CODE DESCRIPTION
+
+//  200	OK - The request has succeeded, resulting in the object being updated.
+//  400 Bad Request - The server encountered an error, the request is incorrect and could not be executed.
 
 
 //  GET ---- (RETRIEVE)
 
-//  Endpoint URL: http://localhost:3000/get
+//  Endpoint URL: /get
 
 //  path parameters:
 
@@ -67,11 +75,17 @@
 
 //  This method returns all JSON objects in the table.
 
+//  STATUS CODE	DESCRIPTION
+
+//  200	OK - The request has succeeded, resulting in the return of the JSON objects.
+//  204	No Content - The request has succeeded, however the table is empty.
+//  404	Not Found - The server encountered an error, the given database cannot be accessed or does not exist.
+
 
 
 //  GETBYID ---- (RETRIEVE BY ID)
 
-//  Endpoint URL: http://localhost:3000/getById/:id
+//  Endpoint URL: /getById/:id
 
 //  path parameters:
 
@@ -80,11 +94,16 @@
 
 //  This method returns the JSON object with given id.
 
+//  STATUS CODE	DESCRIPTION
+
+//  200	OK - The request has succeeded, resulting in the return of a JSON object.
+//  204	No Content - The request has succeeded, however the given id is empty.
+//  404	Not Found - The server encountered an error, the given id doesn not exist or cannot be accessed.
 
 
 //  POST ---- (CREATE)
 
-//  Endpoint URL: http://localhost:3000/post
+//  Endpoint URL: /post
 
 // in the post request you should have a body with a json object containing the following parameters:
 
@@ -99,7 +118,10 @@
 
 //  This method has no return value.
 
+//  STATUS CODE	DESCRIPTION
 
+//  201	Created - The request has been fulfilled and resulted in the JSON object being added to the database.
+//  400	Bad Request - The request could not be understood by the server due to malformed syntax.
 
 ****************************************************************************************************************************************
 
